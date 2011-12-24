@@ -1,8 +1,7 @@
-
-#Need Filename - asset.py
-class asset():
+#Seperate File - Filename - asset.py
+class Asset():
     
-    def __init__(self,name,service_tag,user,dept):
+    def __init__(self,service_tag,name,user,dept):
 
         def GetAssetInformation(service_tag):
             from suds.client import Client
@@ -10,55 +9,20 @@ class asset():
             client = Client("http://xserv.dell.com/services/assetservice.asmx?WSDL")
             return client.service.GetAssetInformation(uuid.uuid1(), "dell_asset_lookup", service_tag)
 
+        def warranty_end_date(asset_info):
+            dates = []
+            for n in range(len(asset_info[0][0][1][0])):
+                dates.append(asset_info[0][0][1][0][n][4].date())
+            return max(dates)
+
         asset_info = GetAssetInformation(service_tag)
         self.name = name.upper()
-        self.model = str(asset_info.Asset[0][0][4]) + ' ' + str(asset_info.Asset[0][0][5])
-        self.service_tag = asset_info.Asset[0][0][0]
-        self.shipped_date = str(asset_info.Asset[0][0][6])
-
-        
-        self.warranty_end_date =  ''# asset_info.Asset[0][0][0]
-
-        
+        self.model = str(asset_info.Asset[0][0][4])
+        self.service_tag = str(asset_info.Asset[0][0][0])
+        self.shipped_date = str(asset_info.Asset[0][0][6].date())
+        self.warranty_end_date =  str(warranty_end_date(asset_info))
         self.user = user
         self.dept = dept
 
-
-
-    def csv_line(self):
-        return ('"%s","%s","%s","%s","%s","%s"' %(self.name,self.model,self.service_tag,self.shipped_date,self.user,self.dept))
-
-    # method used for testing purposes.
-    def print_asset(self):
-        print(self.name,self.model,self.service_tag,self.shipped_date,self.user,self.dept)
-        return
-
-
-
-
-
-
-
-
-#Need Filename - import_csv.py
-def import_csv(path_to_file):
-    return
-
-def parse_csv(data):
-    #split values here
-
-    asset()
-    return
-
-
-
-
-
-
-
-
-
-
-
-
-item = Asset('WS00001','chg94q1','agondal','OFFICE OF BUDGET PLANNING AND ANALYSIS')
+    def print_csv(self):
+        return str('%s,%s,%s,%s,%s,%s,%s\n' %(self.name,self.model,self.service_tag,self.shipped_date,self.warranty_end_date,self.user,self.dept))
