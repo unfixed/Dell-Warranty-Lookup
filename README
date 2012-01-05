@@ -1,2 +1,20 @@
 The purpose of this project will be to create a tool for looking up dell warranty information using service tags without resorting to using dell's webpage form.
-The primary goal behind this project is to keep me busy, and is not yet in any condition to be used outside anything other than testing. As such, there is no warranty real, implied or imaginary. Use this at your own peril.
+
+Initially, I began working on this project under python, but I've since moved to powershell.
+My reasons for doing this are I felt the number of individuals using this tool would more likely have a copy of powershell installed as opposed to python and its dependencies.
+
+Currently, this tool allows you to perform the following actions:
+- Lookup the Warranty End-date* of a single service tag.
+- Lookup set of warranties from a .csv file. returns the following information:
+  - Model
+  - Service Tag
+  - Shipdate
+  - Warranty End-date*
+
+
+* Currently, the Warranty Date being returned is the lastest warranty-service date and is currently agnostic of warranty service type.
+
+Requirements:
+This tool requires at least Powershell 2.0
+If you would like to check your powershell version, use the following command within a Powershell console:
+  $Host.Version
