@@ -1,4 +1,4 @@
-The purpose of this project will be to create a tool for looking up dell warranty information using service tags without resorting to using dell's webpage form.
+This tool is meant for the purpose of looking up dell warranty information using service tags without resorting to using Dell's webpage form.
 
 Initially, I began working on this project under python, but I've since moved to powershell.
 My reasons for doing this are I felt the number of individuals using this tool would more likely have a copy of powershell installed as opposed to python and its dependencies.
