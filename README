@@ -18,3 +18,11 @@ Requirements:
 This tool requires at least Powershell 2.0
 If you would like to check your powershell version, use the following command within a Powershell console:
   $Host.Version
+
+
+Installation:
+In order to use this script after being downloaded, you must go its properties and click "unblock". Also you must have your powershell ExecultionPoilcy set to "RemoteSigned"
+To set the ExecutionPolicy, open up a Powershell console as administrator and enter:
+  Set-ExecutionPolicy Remotesigned
+
+Once the above has been done, simply run the script. (ex: right click the script, and run in powershell.)
