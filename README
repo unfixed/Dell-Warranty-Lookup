@@ -12,7 +12,7 @@ Currently, this tool allows you to perform the following actions:
   - Warranty End-date*
 
 
-* Currently, the Warranty Date being returned is the lastest warranty-service date and is currently agnostic of warranty service type.
+* Currently, the Warranty Date being returned is the latest warranty-service date and is currently agnostic of warranty service type.
 
 Requirements:
 This tool requires at least Powershell 2.0
